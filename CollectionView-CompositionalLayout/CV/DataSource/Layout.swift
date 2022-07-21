@@ -84,12 +84,12 @@ class Layout: UICollectionViewCompositionalLayout {
     
     static private func setupHorizontalGroupSection(environment: NSCollectionLayoutEnvironment,
                                                     scrollingBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior) -> NSCollectionLayoutSection {
-        let itemSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
+        let itemSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1/2),
                                                      heightDimension: .fractionalHeight(1))
         let item: NSCollectionLayoutItem = .init(layoutSize: itemSize)
         
-        let doubleItemGroupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1/2),
-                                                                heightDimension: .fractionalWidth(1/2))
+        let doubleItemGroupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
+                                                                heightDimension: .fractionalHeight(1/2))
         let doubleItemGroup: NSCollectionLayoutGroup = .horizontal(layoutSize: doubleItemGroupSize,
                                                                    repeatingSubitem: item,
                                                                    count: 2)
@@ -99,7 +99,7 @@ class Layout: UICollectionViewCompositionalLayout {
         let fullWidthItem: NSCollectionLayoutItem = .init(layoutSize: fullWidthItemSize)
         
         let groupSize: NSCollectionLayoutSize = .init(widthDimension: .absolute(200), heightDimension: .absolute(200))
-        let group: NSCollectionLayoutGroup = .vertical(layoutSize: groupSize, subitems: [fullWidthItem, doubleItemGroup])
+        let group: NSCollectionLayoutGroup = .vertical(layoutSize: groupSize, subitems: [doubleItemGroup, fullWidthItem])
         
         let section: NSCollectionLayoutSection = .init(group: group)
         section.orthogonalScrollingBehavior = scrollingBehaviour
