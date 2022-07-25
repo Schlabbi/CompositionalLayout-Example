@@ -55,7 +55,9 @@ class Layout: UICollectionViewCompositionalLayout {
     // MARK: - List
     
     static private func setupListLayout(environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        let list: NSCollectionLayoutSection =  .list(using: .init(appearance: .plain), layoutEnvironment: environment)
+        let listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
+        let list: NSCollectionLayoutSection =  .list(using: listConfig,
+                                                     layoutEnvironment: environment)
         list.boundarySupplementaryItems = [setupSectionTitleLayout()]
         
         return list
