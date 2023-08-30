@@ -49,4 +49,9 @@ class InteractiveBackgroundView: UICollectionReusableView {
         subtitleLabel.text = "Focused IndexPath: (\(indexPath.section), \( indexPath.row))"
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        self.layer.zPosition = -1
+    }
+    
 }
